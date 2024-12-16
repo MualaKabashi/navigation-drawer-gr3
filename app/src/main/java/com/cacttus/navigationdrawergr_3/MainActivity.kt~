@@ -1,6 +1,7 @@
 package com.cacttus.navigationdrawergr_3
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.cacttus.navigationdrawergr_3.databinding.ActivityMainBinding
@@ -21,20 +22,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeFragments()
-        initToggle()
 
     }
 
-    fun initializeFragments() {
+
+    fun initializeFragments(){
         homeFragment = HomeFragment()
         profileFragment = ProfileFragment()
         settingsFragment = SettingsFragment()
     }
 
-    fun initToggle() {
-        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+    fun initToggle(){
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, )
     }
 
 }

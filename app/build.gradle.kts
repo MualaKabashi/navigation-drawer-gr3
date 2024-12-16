@@ -44,13 +44,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
+    buildFeatures{
+        viewBinding
+    }
     viewBinding{
         enable = true
     }
 }
 
 dependencies {
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
