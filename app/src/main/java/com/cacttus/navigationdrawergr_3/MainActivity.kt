@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.cacttus.navigationdrawergr_3.databinding.ActivityMainBinding
 import com.cacttus.navigationdrawergr_3.fragments.HomeFragment
+import com.cacttus.navigationdrawergr_3.fragments.PostFragment
 import com.cacttus.navigationdrawergr_3.fragments.ProfileFragment
 import com.cacttus.navigationdrawergr_3.fragments.SettingsFragment
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var profileFragment: ProfileFragment
     private lateinit var settingsFragment: SettingsFragment
+    private lateinit var postFragment: PostFragment
     private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment()
         settingsFragment = SettingsFragment()
         profileFragment = ProfileFragment()
+        postFragment = PostFragment()
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
@@ -72,6 +75,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> {
                     closeDrawerIfOpen()
                     setCurrentFragment(homeFragment)
+                }
+
+                R.id.post -> {
+                    closeDrawerIfOpen()
+                    setCurrentFragment(postFragment)
                 }
             }
             true
