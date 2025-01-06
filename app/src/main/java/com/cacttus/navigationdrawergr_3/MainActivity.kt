@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.cacttus.navigationdrawergr_3.databinding.ActivityMainBinding
+import com.cacttus.navigationdrawergr_3.fragments.CommentsFragment
 import com.cacttus.navigationdrawergr_3.fragments.HomeFragment
 import com.cacttus.navigationdrawergr_3.fragments.PostFragment
 import com.cacttus.navigationdrawergr_3.fragments.ProfileFragment
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var settingsFragment: SettingsFragment
     private lateinit var postFragment: PostFragment
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var commentFragment: CommentsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         settingsFragment = SettingsFragment()
         profileFragment = ProfileFragment()
         postFragment = PostFragment()
+        commentFragment = CommentsFragment()
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
@@ -80,6 +83,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.post -> {
                     closeDrawerIfOpen()
                     setCurrentFragment(postFragment)
+                }
+
+                R.id.comments -> {
+                    closeDrawerIfOpen()
+                    setCurrentFragment(commentFragment)
                 }
             }
             true

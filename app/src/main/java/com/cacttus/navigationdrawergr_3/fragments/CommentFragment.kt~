@@ -1,0 +1,58 @@
+package com.cacttus.navigationdrawergr_3.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.cacttus.navigationdrawergr_3.databinding.PostCommentsBinding
+import com.cacttus.navigationdrawergr_3.helpers.Helpers.provideRetrofit
+import com.cacttus.navigationdrawergr_3.model.Comment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+class CommentFragment : Fragment() {
+    private lateinit var binding: PostCommentsBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = PostCommentsBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getComments()
+    }
+
+    fun getComments() {
+
+        binding.btnGetComments.setOnClickListener {
+            if (!binding.userPostId.text.isNullOrBlank() && !binding.userPostId.text.isNullOrEmpty()) {
+                var id = binding.userPostId.text.toString().trim().toInt()
+
+                provideRetrofit().getComments(id).enqueue(object : Callback<List<Comment>> {
+                    override fun onResponse(
+                        call: Call<List<Comment>>,
+                        response: Response<List<Comment>>
+                    ) {
+                        if (response.isSuccessful && response.body() != null) {
+                            binding.data.text = response.body()!!.toString()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<List<Comment>>, t: Throwable) {
+                        Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+                    }
+
+                })
+            }
+        }
+    }
+
+}

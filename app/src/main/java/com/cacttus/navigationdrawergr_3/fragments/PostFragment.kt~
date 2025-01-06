@@ -46,9 +46,7 @@ class PostFragment : Fragment() {
 
                     binding.postList.setOnItemClickListener { adapterView, view, i, l ->
                         addIntToSharedPreferences(requireContext(), "id", list[i].id)
-                        var nextFragment = PostDetailsFragment()
-                        //nextFragment.arguments = provideBundle("id", list[i].id)
-                        setCurrentFragment(nextFragment)
+                        setCurrentFragment(PostDetailsFragment())
                     }
                 }
             }
@@ -63,11 +61,5 @@ class PostFragment : Fragment() {
         parentFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainer, fragment)
         }.commit()
-    }
-
-    fun provideBundle(key: String, value: Int): Bundle {
-        var bundle = Bundle()
-        bundle.putInt(key, value)
-        return bundle
     }
 }
