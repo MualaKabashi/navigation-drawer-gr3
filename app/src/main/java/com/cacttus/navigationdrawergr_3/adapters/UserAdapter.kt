@@ -7,14 +7,13 @@ import com.cacttus.navigationdrawergr_3.databinding.UserItemBinding
 import com.cacttus.navigationdrawergr_3.model.User
 
 class UserAdapter(var userList: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-
-    class UserViewHolder(var binding: UserItemBinding):
-        RecyclerView.ViewHolder(binding.root){
-            fun bindUser(user:User){
-                binding.user = user
-                binding.executePendingBindings()
-            }
+    class UserViewHolder(var binding: UserItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindUser(user: User) {
+            binding.user = user
+            binding.executePendingBindings()
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         var layout = LayoutInflater.from(parent.context)
@@ -28,6 +27,6 @@ class UserAdapter(var userList: List<User>) : RecyclerView.Adapter<UserAdapter.U
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bindUser(userList[position])
     }
 }

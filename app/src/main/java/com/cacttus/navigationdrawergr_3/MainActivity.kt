@@ -12,6 +12,7 @@ import com.cacttus.navigationdrawergr_3.fragments.HomeFragment
 import com.cacttus.navigationdrawergr_3.fragments.PostFragment
 import com.cacttus.navigationdrawergr_3.fragments.ProfileFragment
 import com.cacttus.navigationdrawergr_3.fragments.SettingsFragment
+import com.cacttus.navigationdrawergr_3.fragments.UserFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var postFragment: PostFragment
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var commentFragment: CommentsFragment
+    private lateinit var userFragment: UserFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         profileFragment = ProfileFragment()
         postFragment = PostFragment()
         commentFragment = CommentsFragment()
+        userFragment = UserFragment()
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
@@ -88,6 +91,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.comments -> {
                     closeDrawerIfOpen()
                     setCurrentFragment(commentFragment)
+                }
+
+                R.id.users -> {
+                    closeDrawerIfOpen()
+                    setCurrentFragment(userFragment)
                 }
             }
             true
