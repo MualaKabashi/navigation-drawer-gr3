@@ -44,16 +44,22 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    viewBinding{
+    viewBinding {
         enable = true
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
 }
 
 dependencies {
 
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
